@@ -36,9 +36,9 @@ meter = CTkMeter(card, refresh_animation=True, hover_effect=True, padding=19, ba
                 indicatorcolor='#eab676')
 meter.grid(row=0, column=0, pady=5) 
 
-meter.set(225) # Value must be between 0 and 360
+meter.set(97) # Value must be between 0 and 360
 
-meter.textvariable.set(f'{225}%') # To set the text
+meter.textvariable.set(f'{int((97/360)*100)}%') # To set the text
 
 label = ct.CTkLabel(card, text='Progress', text_color='#ffffff',
                       font=('Calibri Bold', 22))
