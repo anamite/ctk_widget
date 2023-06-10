@@ -39,6 +39,8 @@ root = ct.CTk()
 ct.set_appearance_mode("White")
 root.minsize(height=400, width=600)
 root.configure(bg_color = '#fafafa')
+
+# Creating a Card Frame to display the meter widget
 card = ct.CTkFrame(root, height=300, width=240, fg_color='#ffffff', corner_radius=8)
 card.grid_propagate(False)
 card.grid(row=0, column=0, padx=80, pady=80)
@@ -49,15 +51,15 @@ meter.grid(row=0, column=0, pady=5)
 
 meter.set(97)  # Value must be between 0 and 360
 
-meter.textvariable.set(f'{int((97 / 360) * 100)}%')  # To set the text in middle
+meter.textvariable.set(f'{int((97 / 360) * 100)}%')  # To set the text
 
+# Labeling the Meter
 label = ct.CTkLabel(card, text='Progress', text_color='#0f1273',
                     font=('Calibri Bold', 22))
 label.grid(row=1, column=0)
 
 
 root.mainloop()
-
 ```
 
 ## Contributing
