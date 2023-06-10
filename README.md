@@ -16,8 +16,12 @@ Currently Available Widgets:
 - CTkMeter
 
 ## CTkMeter
+
 I took and modified this code from the meter widget of ttkbootstrap library.
 Works fine inside customtkinter
+
+![image](https://github.com/anamite/ctk_widget/assets/77412636/17fa62d6-47e6-48d9-9600-8c97717f1d57)
+
 ```python
 from ctk_widget import CTkMeter
 
