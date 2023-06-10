@@ -40,7 +40,7 @@ class CTkMeter(ttk.Label):
         draw.arc((0, 0, 990, 990), 0, 360, self.troughcolor, 100)
         self.arc = ImageTk.PhotoImage(self.im.resize((self.size, self.size), Image.LANCZOS))
 
-    def update_arcvariable(self):
+    def update_arcvariable(self, *args):
         """Redraw the arc image based on variable settings"""
         angle = int(float(self.arcvariable.get())) + 90
         self.im = Image.new('RGBA', (1000, 1000))
@@ -51,7 +51,7 @@ class CTkMeter(ttk.Label):
         self.configure(image=self.arc)
 
     def loading_hover_effect(self, event):
-        if self.hover_effect and isinstance(self, Gauge):
+        if self.hover_effect and isinstance(self, CTkMeter):
             actual_val = self.arcvariable.get()  # 360 maximum
             if actual_val <= 360:
                 self.arcvariable.set(actual_val - 15)
