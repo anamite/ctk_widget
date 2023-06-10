@@ -28,17 +28,17 @@ from ctk_widget import CTkMeter
 
 #---- add this code inside your root frame
 
-card = ct.CTkFrame(root, height=296, width=240, fg_color='#76aaea', corner_radius=8)
+card = ct.CTkFrame(root, height=300, width=240, fg_color='#76aaea', corner_radius=8)
 card.grid_propagate(False)
-card.grid(row=1, column=i, padx=8, pady=8)
+card.grid(row=0, column=0, padx=8, pady=8)
 meter = CTkMeter(card, refresh_animation=True, hover_effect=True, padding=19, background='#76aaea',
                 foreground='#76aaea', troughcolor='#f7e2c8',
                 indicatorcolor='#eab676')
-meter.grid(row=0, column=0, pady=3) 
+meter.grid(row=0, column=0, pady=5) 
 
-meter.set(200) # Value must be between 0 and 360
+meter.set(225) # Value must be between 0 and 360
 
-meter.textvariable.set(f'{int(((gauge.arcvariable.get())/360)*100)}%') # To set the text in the middle
+meter.textvariable.set(f'{225}%') # To set the text
 
 label = ct.CTkLabel(card, text='Progress', text_color='#ffffff',
                       font=('Calibri Bold', 22))
