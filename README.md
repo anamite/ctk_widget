@@ -16,11 +16,12 @@ Currently Available Widgets:
 - CTkMeter
 
 ## CTkMeter
+A cool and Modern looking Meter widget with hover animation for CustomTkinter Library.
+
 ![image](https://github.com/anamite/ctk_widget/assets/77412636/a1f3f709-ac33-4685-a81d-e170d1dfd865)
 
 
-I took and modified this code from the meter widget of ttkbootstrap library.
-Works fine inside customtkinter
+
 
 **New Attributes** :
 | Parameters |Description |
@@ -34,7 +35,7 @@ Works fine inside customtkinter
 | command | To pass required on click command to the Meter widget |
 
 
-
+**Example Code** :
 ```python
 import customtkinter as ct
 from ctk_widget import CTkMeter
