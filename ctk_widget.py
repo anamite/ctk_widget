@@ -4,14 +4,36 @@ from PIL import Image, ImageTk, ImageDraw
 
 
 class CTkMeter(ttk.Label):
+    """
+        A custom Tkinter widget that displays a circular progress meter.
 
-    def __init__(self, parent, hover_effect=False, refresh_animation=False, **kwargs):
+        :param parent: The parent widget.
+        :type parent: tkinter.Widget
+        :param hover_effect: Whether to enable the hover effect. Defaults to False.
+        :type hover_effect: bool
+        :param refresh_animation: Whether to refresh the animation when the value is set. Defaults to False.
+        :type refresh_animation: bool
+        :param kwargs: Additional keyword arguments to pass to the ttk.Label initializer.
+        """
+    def __init__(self, parent, hover_effect=False, refresh_animation=False, command=None, **kwargs):
+        """
+                Initialize the CTkMeter widget.
+
+                :param parent: The parent widget.
+                :type parent: tkinter.Widget
+                :param hover_effect: Whether to enable the hover effect animation. Defaults to False.
+                :type hover_effect: bool
+                :param refresh_animation: Whether to refresh the animation when the value is set. Defaults to False.
+                :type refresh_animation: bool
+                :param command: Passes 'on-click' command.
+                :param kwargs: Additional keyword arguments to pass to the ttk.Label initializer.
+                """
         self.arc = None
         self.im = Image.new('RGBA', (1000, 1000))
         self.min_value = kwargs.get('minvalue') or 0
         self.max_value = kwargs.get('maxvalue') or 100
         self.size = kwargs.get('size') or 200
-        self.font = kwargs.get('font') or 'Calibri 12 bold'
+        self.font = kwargs.get('font') or 'Calibri 14 bold'
         self.background = kwargs.get('background')
         self.foreground = kwargs.get('foreground') or '#777'
         self.troughcolor = kwargs.get('troughcolor') or '#003547'
@@ -21,6 +43,7 @@ class CTkMeter(ttk.Label):
         self.textvariable = tk.StringVar()
         self.hover_effect = hover_effect
         self.refresh_animation = refresh_animation
+        self.command = command
         self.setup()
         kwargs.pop('troughcolor', None)
         kwargs.pop('indicatorcolor', None)
@@ -28,7 +51,24 @@ class CTkMeter(ttk.Label):
         super().__init__(parent, image=self.arc, compound='center', style='Gauge.TLabel',
                          textvariable=self.textvariable, **kwargs)
         # Bind the <Enter> event to the loading_hover_effect method
-        self.bind("<Enter>", self.loading_hover_effect)
+
+        self.bind("<Button-1>", self.on_click)
+        self.bind("<Enter>", self.on_enter)
+        self.bind("<Leave>", self.on_leave)
+
+
+
+    def on_enter(self, event):
+        if self.command:
+            self.configure(cursor="hand2")
+        self.loading_hover_effect(None)
+
+    def on_leave(self, event):
+        self.configure(cursor="")
+
+    def on_click(self, event):
+        if self.command:
+            self.command()
 
     def setup(self):
         """Setup routine"""
