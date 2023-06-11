@@ -58,7 +58,7 @@ meter = CTkMeter(card, refresh_animation=True, hover_effect=True, padding=19, ba
                  indicatorcolor='#0f1273', command=clicked)
 meter.grid(row=0, column=0, pady=5)
 
-meter.set(214)  # Value must be between 0 and 360 (Use set and meter
+meter.set(214)  # Value must be between 0 and 360 
 
 meter.textvariable.set(f'{int((meter.arcvariable.get() / 360) * 100)}%')  # To set the text
 
